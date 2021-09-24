@@ -72,6 +72,7 @@ No requirements.
 | auto\_upgrade | (Optional) Whether the nodes will be automatically upgraded. | `bool` | `true` | no |
 | autoscaling | Whether to enable autoscaling. Values of min\_node\_count and max\_node\_count will be used | `bool` | `true` | no |
 | cluster | Name of GKE cluster | `string` | n/a | yes |
+| create\_before\_destroy | Whether to create a new node pool before destroying the old one | `bool` | `true` | no |
 | create\_timeout | n/a | `string` | `"30m"` | no |
 | delete\_timeout | n/a | `string` | `"30m"` | no |
 | disable\_legacy\_metadata\_endpoints | disable-legacy-endpoints metadata set | `bool` | `true` | no |
@@ -90,7 +91,8 @@ No requirements.
 | max\_pods\_per\_node | (Optional) The maximum number of pods per node in this node pool. | `any` | `null` | no |
 | metadata | Optional) The metadata key/value pairs assigned to nodes in the node pool | `map` | `{}` | no |
 | min\_node\_count | (optional) Minimum amount of Nodes when autoscaling is enabled | `string` | `"1"` | no |
-| name | node pool name | `string` | n/a | yes |
+| name | node pool name. name and name\_prefix cannot be specified on the same node pool | `string` | `null` | no |
+| name\_prefix | node pool name prefix. name and name\_prefix cannot be specified on the same node pool | `string` | `null` | no |
 | node\_count | (optional) Number of nodes to be deployed. Should not be used alongside autoscaling | `string` | `"1"` | no |
 | oauth\_scopes | (Optional) Scopes that are used by NAP when creating node pools. | `list(string)` | `[]` | no |
 | project\_id | name of the google project | `string` | n/a | yes |

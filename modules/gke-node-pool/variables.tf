@@ -47,7 +47,14 @@ variable "min_node_count" {
 
 variable "name" {
   type        = string
-  description = "node pool name"
+  default     = null
+  description = "node pool name. name and name_prefix cannot be specified on the same node pool"
+}
+
+variable "name_prefix" {
+  type        = string
+  default     = null
+  description = "node pool name prefix. name and name_prefix cannot be specified on the same node pool"
 }
 
 variable "max_node_count" {
@@ -173,4 +180,9 @@ variable "metadata" {
 variable "tags" {
   description = "(Optional) The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls."
   default     = []
+}
+
+variable "create_before_destroy" {
+  default     = true
+  description = "Whether to create a new node pool before destroying the old one"
 }

@@ -4,10 +4,11 @@
 resource "google_container_node_pool" "node_pool" {
   provider = google
 
-  name    = var.name
-  cluster = var.cluster
-  project = var.project_id
-  version = var.auto_upgrade ? "" : var.kubernetes_version
+  name        = var.name
+  name_prefix = var.name_prefix
+  cluster     = var.cluster
+  project     = var.project_id
+  version     = var.auto_upgrade ? "" : var.kubernetes_version
 
   location       = var.location
   node_locations = var.zones
