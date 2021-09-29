@@ -11,7 +11,7 @@ terraform {
 }
 
 locals {
-  workload_identity_config = ! var.enable_workload_identity ? [] : var.identity_namespace == null ? [{
+  workload_identity_config = !var.enable_workload_identity ? [] : var.identity_namespace == null ? [{
     identity_namespace = "${var.project}.svc.id.goog" }] : [{ identity_namespace = var.identity_namespace
   }]
 }
@@ -89,15 +89,15 @@ resource "google_container_cluster" "cluster" {
 
   addons_config {
     http_load_balancing {
-      disabled = ! var.http_load_balancing
+      disabled = !var.http_load_balancing
     }
 
     horizontal_pod_autoscaling {
-      disabled = ! var.horizontal_pod_autoscaling
+      disabled = !var.horizontal_pod_autoscaling
     }
 
     network_policy_config {
-      disabled = ! var.enable_network_policy
+      disabled = !var.enable_network_policy
     }
   }
 

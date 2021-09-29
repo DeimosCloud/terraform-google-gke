@@ -212,8 +212,10 @@ For more information, see https://cloud.google.com/kubernetes-engine/docs/how-to
 | client\_certificate | Public certificate used by clients to authenticate to the cluster endpoint. |
 | client\_key | Private key used by clients to authenticate to the cluster endpoint. |
 | cluster\_ca\_certificate | The public certificate that is the root of trust for the cluster. |
-| endpoint | The IP address of the cluster master. |
+| endpoint | The IP address of the cluster master. This is private is disable\_public\_access it true |
 | master\_version | The Kubernetes master version. |
 | name | The name of the cluster master. This output is used for interpolation with node pools, other modules. |
+| private\_endpoint | The Private IP address of the cluster master. |
+| public\_endpoint | The Public IP address of the cluster master. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
