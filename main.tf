@@ -175,6 +175,13 @@ resource "google_container_cluster" "cluster" {
     }
   }
 
+  notification_config {
+    pubsub {
+      enabled = var.enable_pubsub_notification
+      topic = var.pubsub_topic
+    }
+  }
+
   resource_labels = var.resource_labels
 }
 
