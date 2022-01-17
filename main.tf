@@ -112,10 +112,10 @@ resource "google_container_cluster" "cluster" {
     enabled = var.enable_vertical_pod_autoscaling
   }
 
-  master_auth {
-    username = var.basic_auth_username
-    password = var.basic_auth_password
-  }
+  # master_auth {
+  #   username = var.basic_auth_username
+  #   password = var.basic_auth_password
+  # }
 
   dynamic "master_authorized_networks_config" {
     for_each = var.master_authorized_networks_config
@@ -171,7 +171,8 @@ resource "google_container_cluster" "cluster" {
     for_each = local.workload_identity_config
 
     content {
-      identity_namespace = workload_identity_config.value.identity_namespace
+      workload_pool = "${data.google_project.project.project_id}.svc.id.goog"
+      # identity_namespace = workload_identity_config.value.identity_namespace
     }
   }
 
