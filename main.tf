@@ -171,7 +171,7 @@ resource "google_container_cluster" "cluster" {
     for_each = local.workload_identity_config
 
     content {
-      workload_pool = "${data.google_project.project.project_id}.svc.id.goog"
+      workload_pool = "${var.project}.svc.id.goog"
       # identity_namespace = workload_identity_config.value.identity_namespace
     }
   }
