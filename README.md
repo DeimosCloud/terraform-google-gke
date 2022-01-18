@@ -5,7 +5,7 @@ for a [Google Kubernetes Engine (GKE) Cluster](https://cloud.google.com/kubernet
 
 The Module is adapted from [Gruntwork's GKE Module](https://github.com/gruntwork-io/terraform-google-gke)
 
-## What's in this Repox
+## What's in this Repo
 - [Modules](./modules)
 The modules directory contains the main modules that should be used in your code
   - [gke-node-pool](./modules/gke-node-pool): Module for creating GKE Node Pools
