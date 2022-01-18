@@ -172,7 +172,6 @@ resource "google_container_cluster" "cluster" {
 
     content {
       workload_pool = "${var.project}.svc.id.goog"
-      # identity_namespace = workload_identity_config.value.identity_namespace
     }
   }
 
