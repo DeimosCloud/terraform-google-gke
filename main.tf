@@ -11,7 +11,7 @@ terraform {
 }
 
 locals {
-  workload_identity_config = !var.enable_workload_identity ? [] : var.identity_namespace == null ? [{
+  workload_identity_config = ! var.enable_workload_identity ? [] : var.identity_namespace == null ? [{
     identity_namespace = "${var.project}.svc.id.goog" }] : [{ identity_namespace = var.identity_namespace
   }]
 }
@@ -89,15 +89,15 @@ resource "google_container_cluster" "cluster" {
 
   addons_config {
     http_load_balancing {
-      disabled = !var.http_load_balancing
+      disabled = ! var.http_load_balancing
     }
 
     horizontal_pod_autoscaling {
-      disabled = !var.horizontal_pod_autoscaling
+      disabled = ! var.horizontal_pod_autoscaling
     }
 
     network_policy_config {
-      disabled = !var.enable_network_policy
+      disabled = ! var.enable_network_policy
     }
   }
 
@@ -112,10 +112,10 @@ resource "google_container_cluster" "cluster" {
     enabled = var.enable_vertical_pod_autoscaling
   }
 
-  master_auth {
-    username = var.basic_auth_username
-    password = var.basic_auth_password
-  }
+  # master_auth {
+  #   username = var.basic_auth_username
+  #   password = var.basic_auth_password
+  # }
 
   dynamic "master_authorized_networks_config" {
     for_each = var.master_authorized_networks_config
@@ -171,7 +171,14 @@ resource "google_container_cluster" "cluster" {
     for_each = local.workload_identity_config
 
     content {
-      identity_namespace = workload_identity_config.value.identity_namespace
+      workload_pool = "${var.project}.svc.id.goog"
+    }
+  }
+
+  notification_config {
+    pubsub {
+      enabled = var.enable_pubsub_notification
+      topic   = var.pubsub_topic
     }
   }
 

@@ -233,3 +233,15 @@ variable "release_channel" {
   description = "(Optional) The release channel to get upgrades of your GKE clusters from"
   type        = string
 }
+
+variable "enable_pubsub_notification" {
+  type        = bool
+  description = "Option to enable GKE pub sub notification"
+  default     = null
+}
+
+variable "pubsub_topic" {
+  type        = string
+  description = "Pub sub topic to publish GKE notifications "
+  default     = null
+}
