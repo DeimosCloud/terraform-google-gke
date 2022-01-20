@@ -20,13 +20,13 @@ output "endpoint" {
 output "private_endpoint" {
   description = "The Private IP address of the cluster master."
   sensitive   = true
-  value       = google_container_cluster.cluster.private_cluster_config.0.private_endpoint
+  value       = var.disable_public_endpoint || var.enable_private_nodes ? google_container_cluster.cluster.private_cluster_config.0.private_endpoint : null
 }
 
 output "public_endpoint" {
   description = "The Public IP address of the cluster master."
   sensitive   = true
-  value       = google_container_cluster.cluster.private_cluster_config.0.public_endpoint
+  value       = var.disable_public_endpoint || var.enable_private_nodes ? google_container_cluster.cluster.private_cluster_config.0.public_endpoint : google_container_cluster.cluster.endpoint
 }
 
 # The following outputs allow authentication and connectivity to the GKE Cluster.
