@@ -64,10 +64,10 @@ resource "google_container_node_pool" "node_pool" {
 
     oauth_scopes = var.oauth_scopes
     dynamic "workload_metadata_config" {
-      for_each = var.workload_metadata_config != null ? [var.workload_metadata_config] : []
+      for_each = var.workload_metadata_config ? ["workload_metadata_config"] : []
 
       content {
-        node_metadata = var.workload_metadata_config
+        mode = "GKE_METADATA"
       }
     }
 
@@ -89,3 +89,5 @@ resource "google_container_node_pool" "node_pool" {
     delete = var.delete_timeout
   }
 }
+
+

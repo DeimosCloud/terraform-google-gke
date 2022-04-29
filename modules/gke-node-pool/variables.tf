@@ -119,9 +119,9 @@ variable "oauth_scopes" {
 }
 
 variable "workload_metadata_config" {
-  description = "Metadata configuration to expose to workloads on the node pool."
-  default     = null
-  type        = string
+  description = "whether to Run the GKE Metadata Server on this node."
+  default     = true
+  type        = bool
 }
 
 variable "enable_secure_boot" {

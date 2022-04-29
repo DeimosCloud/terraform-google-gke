@@ -110,7 +110,7 @@ No modules.
 | <a name="input_tags"></a> [tags](#input\_tags) | (Optional) The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls. | `list` | `[]` | no |
 | <a name="input_taints"></a> [taints](#input\_taints) | (Optional) A list of Kubernetes taints to apply to nodes | <pre>list(object({<br>    key    = string<br>    value  = string<br>    effect = string<br>  }))</pre> | `[]` | no |
 | <a name="input_update_timeout"></a> [update\_timeout](#input\_update\_timeout) | n/a | `string` | `"30m"` | no |
-| <a name="input_workload_metadata_config"></a> [workload\_metadata\_config](#input\_workload\_metadata\_config) | Metadata configuration to expose to workloads on the node pool. | `string` | `null` | no |
+| <a name="input_workload_metadata_config"></a> [workload\_metadata\_config](#input\_workload\_metadata\_config) | whether to Run the GKE Metadata Server on this node. | `bool` | `true` | no |
 | <a name="input_zones"></a> [zones](#input\_zones) | The zones to host the cluster in (optional if regional cluster / required if zonal) | `list(string)` | `null` | no |
 
 ## Outputs
